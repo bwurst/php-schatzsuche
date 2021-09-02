@@ -55,7 +55,13 @@ echo '<div class="row frage"><div class="col">'.nl2br($schritt[$aktuelle_frage][
     <label for="antwort">Deine Antwort: </label>
 </div>
 <div class="col">
-    <input type="text" id="antwort" name="antwort" size="15"></p>
+    ';
+if (is_numeric($schritt[$aktuelle_frage]['richtig'])) {
+    echo '    <input type="number" id="antwort" name="antwort" size="15"></p>';
+} else {
+    echo '    <input type="text" id="antwort" name="antwort" size="15"></p>';
+}
+echo '
 </div>
 </div>
 <div class="row">
