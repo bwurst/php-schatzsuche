@@ -55,7 +55,7 @@ echo '<div class="row frage"><div class="col">'.nl2br($schritt[$aktuelle_frage][
     <label for="antwort">Deine Antwort: </label>
 </div>
 <div class="col">
-    <input type="number" id="antwort" name="antwort" length="10"></p>
+    <input type="text" id="antwort" name="antwort" size="15"></p>
 </div>
 </div>
 <div class="row">

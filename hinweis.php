@@ -9,7 +9,7 @@ if (isset($_REQUEST['schritt']) && isset($schritt[(int) $_REQUEST['schritt']])) 
 
 if (isset($_REQUEST['antwort'])) {
     $antwort = htmlspecialchars($_REQUEST['antwort']);
-    if ($antwort != $schritt[$aktuelle_frage]["richtig"]) {
+    if (!richtige_antwort($antwort, $aktuelle_frage)) {
         header("Location: index.php?schritt=$aktuelle_frage&fehler");
         die();
     }

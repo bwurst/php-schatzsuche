@@ -1,5 +1,16 @@
 <?php
 
+function richtige_antwort($antwort, $aktuelle_frage)
+{
+    global $schritt;
+    $richtig = $schritt[$aktuelle_frage]["richtig"];
+    // numerisch
+    //return ($antwort == $richtig);
+
+    //alphanumerisch
+    return (strtolower((string) $antwort) === strtolower( (string) $richtig));
+}
+
 $schritt = array(
     1 => array("frage" => "Löse das Rätsel.\nGib das Ergebnis hier ein.",
                "richtig" => "134",
