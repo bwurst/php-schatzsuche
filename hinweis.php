@@ -46,8 +46,12 @@ if ($hinweis) {
     // Blende den Hinweis der vergangenen Frage ein
     echo '<h3>Das war richtig! Hier dein nächster Hinweis:</h3>';
     echo '<div class="row hinweis">
-    <div class="col">'.nl2br($hinweis).'</div>
-    </div>';
+    <div class="col"><p>'.nl2br($hinweis).'</p>';
+    if (isset($schritt[$aktuelle_frage]["coord"])) {
+        $c = $schritt[$aktuelle_frage]["coord"];
+        echo '<p>GPS-Koordinaten: <a href="geo:'.$c[0].','.$c[1].'?q='.$c[0].','.$c[1].'">'.$c[0].' / '.$c[1].'</a></p>';
+    }
+    echo '</div></div>';
 }
 if (isset($schritt[$aktuelle_frage+1])) {
     echo '<div class="row">

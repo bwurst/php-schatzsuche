@@ -40,9 +40,13 @@ if ($aktuelle_frage > 1 && isset($schritt[$aktuelle_frage-1]["hinweis"])) {
 if ($hinweis) {
     // Blende den Hinweis der vergangenen Frage ein
     echo '<div class="row hinweis">
-    <div class="col"><em>Zur Erinnerung, der vergangene Hinweis:</em><br>
-    '.nl2br($hinweis).'</div>
-    </div>';
+    <div class="col"><p><em>Zur Erinnerung, der vergangene Hinweis:</em></p>
+    <p>'.nl2br($hinweis).'</p>';
+    if (isset($schritt[$aktuelle_frage-1]["coord"])) {
+        $c = $schritt[$aktuelle_frage-1]["coord"];
+        echo '<p>GPS-Koordinaten: <a href="geo:'.$c[0].','.$c[1].'?q='.$c[0].','.$c[1].'">'.$c[0].' / '.$c[1].'</a></p>';
+    }
+    echo '</div></div>';
 }
 
 if ($fehler) {
