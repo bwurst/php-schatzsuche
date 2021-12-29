@@ -40,8 +40,15 @@ if (isset($schritt[$aktuelle_frage-1]["hinweis"])) {
 if ($hinweis) {
     // Blende den Hinweis der vergangenen Frage ein
     echo '<div class="row hinweis">
-    <div class="col"><p><em>Hinweis zur nächsten Station:</em></p>
-    <p>'.nl2br($hinweis).'</p>';
+    <div class="col"><p><em>Hinweis zur nächsten Station:</em></p>';
+    echo '<p>'.nl2br($hinweis).'</p>';
+    if (isset($schritt[$aktuelle_frage-1]["bildhinweis"])) {
+        $imgfile = $schritt[$aktuelle_frage-1]["bildhinweis"];
+        if (file_exists($imgfile)) {
+            $imginfo = getimagesize($imgfile);
+            echo '<img src="'.$imgfile.'" style="width: '.$imginfo[0].'px; height: '.$imginfo[1].'px;">';
+        }
+    }
     if (isset($schritt[$aktuelle_frage-1]["coord"])) {
         $c = $schritt[$aktuelle_frage-1]["coord"];
         echo '<p>GPS-Koordinaten: <a href="geo:'.$c[0].','.$c[1].'?q='.$c[0].','.$c[1].'">'.$c[0].' / '.$c[1].'</a></p>';
@@ -51,7 +58,7 @@ if ($hinweis) {
         <div class="collapse" id="karte">
         <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox='.$c[1].','.$c[0].','.$c[1].','.$c[0].'&amp;marker='.$c[0].','.$c[1].'" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat='.$c[0].'&amp;mlon='.$c[1].'#map=17/'.$c[0].'/'.$c[1].'">Größere Karte anzeigen</a></small>
         </div>';
- }
+    }
     echo '</div></div>';
 }
 
