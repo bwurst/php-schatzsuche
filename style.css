@@ -16,6 +16,7 @@ div.error {
 div.frage {
     border: 1px dotted blue;
     background-color: #ddf;
+    margin-top: 1em;
 }
 
 div.eingabe {
