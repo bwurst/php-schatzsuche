@@ -45,8 +45,7 @@ if ($hinweis) {
     if (isset($schritt[$aktuelle_frage-1]["bildhinweis"])) {
         $imgfile = $schritt[$aktuelle_frage-1]["bildhinweis"];
         if (file_exists($imgfile)) {
-            $imginfo = getimagesize($imgfile);
-            echo '<img src="'.$imgfile.'" style="width: '.$imginfo[0].'px; height: '.$imginfo[1].'px;">';
+            echo '<img src="'.$imgfile.'" style="max-width: 100%;">';
         }
     }
     if (isset($schritt[$aktuelle_frage-1]["coord"])) {
