@@ -7,6 +7,11 @@ div.row {
     padding: 1em;
 }
 
+div.richtig {
+    border: 1px solid green;
+    background-color: #dfd;
+}
+
 div.error {
     border: 1px solid red;
     background-color: #fdd;

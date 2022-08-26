@@ -15,7 +15,7 @@ if (isset($_REQUEST['antwort'])) {
     }
 }
 
-header("Location: index.php?schritt=".($aktuelle_frage+1));
+header("Location: index.php?schritt=".($aktuelle_frage+1)."&richtig");
 
 
 ?><!doctype html>
