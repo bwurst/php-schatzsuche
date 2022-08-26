@@ -1,10 +1,16 @@
 <?php
-$title = 'Timos Geburtstag';
+
+$title = "GPS-Schnitzeljagd";
 
 function richtige_antwort($antwort, $aktuelle_frage)
 {
     global $schritt;
     $richtig = $schritt[$aktuelle_frage]["richtig"];
+    $antwort = chop($antwort);
+    // Wenn $richtig ein array ist, sind mehrere Antworten richtig.
+    if (is_array($richtig)) {
+        return (in_array(strtolower($antwort), array_map('strtolower', $richtig)));
+    }
     //alphanumerisch
     return (strtolower((string) $antwort) === strtolower( (string) $richtig));
 }

@@ -74,7 +74,7 @@ if ($schritt[$aktuelle_frage]["frage"]) {
     </div>
     <div class="col">
         ';
-    if (is_numeric($schritt[$aktuelle_frage]['richtig'])) {
+    if (is_int($schritt[$aktuelle_frage]['richtig'])) {
         echo '    <input type="number" id="antwort" name="antwort" size="15"></p>';
     } else {
         echo '    <input type="text" id="antwort" name="antwort" size="15"></p>';
