@@ -7,6 +7,11 @@ if (isset($_REQUEST['schritt']) && isset($schritt[(int) $_REQUEST['schritt']])) 
     $aktuelle_frage = (int) $_REQUEST['schritt'];
 }
 
+$richtig = false;
+if (isset($_REQUEST['richtig'])) {
+    $richtig = true;
+}
+
 $fehler = false;
 if (isset($_REQUEST['fehler'])) {
     $fehler = true;
@@ -28,9 +33,13 @@ if (isset($_REQUEST['fehler'])) {
     <title><?php echo $title;?></title>
   </head>
   <body>
-    <h3><?php echo "$title: Schritt $aktuelle_frage"; ?></h3>
+    <h3><?php echo "$title: Frage $aktuelle_frage"; ?></h3>
 
 <?php
+if ($richtig) {
+    echo '<div class="row richtig"><div class="col">Das war richtig!</div></div>';
+}
+
 echo '<form action="hinweis.php?schritt='.$aktuelle_frage.'" method="post">';
 
 $hinweis = null;
@@ -40,7 +49,7 @@ if (isset($schritt[$aktuelle_frage-1]["hinweis"])) {
 if ($hinweis) {
     // Blende den Hinweis der vergangenen Frage ein
     echo '<div class="row hinweis">
-    <div class="col"><p><em>Hinweis zur nächsten Station:</em></p>';
+    <div class="col">';
     echo '<p>'.nl2br($hinweis).'</p>';
     if (isset($schritt[$aktuelle_frage-1]["bildhinweis"])) {
         $imgfile = $schritt[$aktuelle_frage-1]["bildhinweis"];
